@@ -10,4 +10,17 @@ import UIKit
 
 class GithubRepository {
     
+    var fullName: String
+    var htmlURL: URL
+    var repositoryID: String?
+    
+    init(dictionary values: JSONDictionary) {
+        
+        self.fullName = (values["full_name"] as? String)!
+        self.htmlURL = URL(string: (values["html_url"] as? String)!)!
+        guard let repositoryID = values["id"] else { return }
+        self.repositoryID = String(describing: repositoryID)
+        
+    }
+    
 }
